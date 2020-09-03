@@ -7,13 +7,16 @@ class GildedRose(object):
 
     def change_quality(self, base_quality, delta):
         new_quality = base_quality + delta
-        return new_quality if new_quality < 50 else 50
+        if new_quality > 50:
+            return 50
+        elif new_quality < 0:
+            return 0
+        return new_quality
 
     def update_item(self, item):
         if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
-            if item.quality > 0:
-                if item.name != "Sulfuras, Hand of Ragnaros":
-                    item.quality = item.quality - 1
+            if item.name != "Sulfuras, Hand of Ragnaros":
+                item.quality = self.change_quality(item.quality, -1)
         else:
             item.quality = self.change_quality(item.quality, 1)
             if item.name == "Backstage passes to a TAFKAL80ETC concert":
@@ -28,9 +31,10 @@ class GildedRose(object):
         if item.sell_in < 0:
             if item.name != "Aged Brie":
                 if item.name != "Backstage passes to a TAFKAL80ETC concert":
+                    # TODO: Try to remove redundant conditional below
                     if item.quality > 0:
                         if item.name != "Sulfuras, Hand of Ragnaros":
-                            item.quality = item.quality - 1
+                            self.change_quality(item.quality, -1)
                 else:
                     item.quality = item.quality - item.quality
             else:
