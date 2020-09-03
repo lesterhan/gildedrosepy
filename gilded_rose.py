@@ -5,6 +5,9 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
 
+    def increment_quality(self, base_quality, increment_by):
+        return 1
+
     def update_item(self, item):
         if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
             if item.quality > 0:

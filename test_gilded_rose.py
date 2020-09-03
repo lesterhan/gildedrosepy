@@ -41,6 +41,8 @@ class TestUpdateQuality(unittest.TestCase):
         self.assertEquals(item.quality, 4)
         self.assertEquals(item.sell_in, 4)
 
+
+class TestSpecialItems(unittest.TestCase):
     def test_aged_brie(self):
         sell_in = 5
         quality = 5
@@ -49,6 +51,20 @@ class TestUpdateQuality(unittest.TestCase):
         GildedRose(item_list).update_item(item)
         self.assertEquals(item.quality, 6)
         self.assertEquals(item.sell_in, 4)
+        
+    def test_sulfuras_hand_of_ragnaros(self):
+        sell_in = 5
+        quality = 80
+        item = Item("Sulfuras, Hand of Ragnaros", sell_in, quality)
+        item_list = [item]
+        GildedRose(item_list).update_item(item)
+        self.assertEquals(item.quality, 80)
+        self.assertEquals(item.sell_in, 5)
+
+
+class TestIncrementQuality(unittest.TestCase):
+    def test_increment_quality_increments_given_amount(self):
+        self.assertEquals(GildedRose([]).increment_quality(base_quality=0, increment_by=1), 1)
 
 if __name__ == '__main__':
     unittest.main()
