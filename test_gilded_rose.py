@@ -41,5 +41,14 @@ class TestUpdateQuality(unittest.TestCase):
         self.assertEquals(item.quality, 4)
         self.assertEquals(item.sell_in, 4)
 
+    def test_aged_brie(self):
+        sell_in = 5
+        quality = 5
+        item = Item("Aged Brie", sell_in, quality)
+        item_list = [item]
+        GildedRose(item_list).update_item(item)
+        self.assertEquals(item.quality, 6)
+        self.assertEquals(item.sell_in, 4)
+
 if __name__ == '__main__':
     unittest.main()
