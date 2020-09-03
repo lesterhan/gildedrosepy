@@ -51,7 +51,7 @@ class TestSpecialItems(unittest.TestCase):
         GildedRose(item_list).update_item(item)
         self.assertEquals(item.quality, 6)
         self.assertEquals(item.sell_in, 4)
-        
+
     def test_sulfuras_hand_of_ragnaros(self):
         sell_in = 5
         quality = 80
@@ -64,7 +64,10 @@ class TestSpecialItems(unittest.TestCase):
 
 class TestIncrementQuality(unittest.TestCase):
     def test_increment_quality_increments_given_amount(self):
-        self.assertEquals(GildedRose([]).increment_quality(base_quality=0, increment_by=1), 1)
+        self.assertEquals(GildedRose([]).change_quality(base_quality=0, delta=1), 1)
+
+    def test_increment_quality_capped_at_fifty(self):
+        self.assertEquals(GildedRose([]).change_quality(base_quality=50, delta=1), 50)
 
 if __name__ == '__main__':
     unittest.main()
