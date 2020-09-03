@@ -20,5 +20,26 @@ class TestItem(unittest.TestCase):
         item = Item("becca toe", 0, quality)
         self.assertEquals(quality, item.quality)
 
+
+class TestUpdateQuality(unittest.TestCase):
+
+    def test_update_quality_normal_item(self):
+        sell_in = 5
+        quality = 5
+        item = Item("becca", sell_in, quality)
+        item_list = [item]
+        GildedRose(item_list).update_quality()
+        self.assertEquals(item.quality, 4)
+        self.assertEquals(item.sell_in, 4)
+
+    def test_update_item(self):
+        sell_in = 5
+        quality = 5
+        item = Item("becca", sell_in, quality)
+        item_list = [item]
+        GildedRose(item_list).update_item(item)
+        self.assertEquals(item.quality, 4)
+        self.assertEquals(item.sell_in, 4)
+
 if __name__ == '__main__':
     unittest.main()
