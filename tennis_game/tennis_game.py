@@ -11,4 +11,7 @@ class TennisGame(object):
         """
         docstring
         """
-        pass
+        return "Love-All"
+
+    def wonPoint(self, player):
+      pass
