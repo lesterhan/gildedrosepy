@@ -4,8 +4,10 @@ class TennisGame(object):
         """
         docstring
         """
-        self.player1Score = 0
-        self.player2Score = 0
+        self.playerScores = {
+            'player1': ZeroPoint(),
+            'player2': ZeroPoint(),
+        }
 
     def getScore(self):
         """
@@ -14,7 +16,8 @@ class TennisGame(object):
         return "Love-All"
 
     def wonPoint(self, player):
-      pass
+        pass
+        # self.playerScores[player] = self.playerScores[player].nextPoint()
 
 
 class Point(object):
