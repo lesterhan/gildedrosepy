@@ -15,3 +15,27 @@ class TennisGame(object):
 
     def wonPoint(self, player):
       pass
+
+
+class Point(object):
+
+    def nextPoint(self):
+        pass
+
+
+class ZeroPoint(Point):
+
+    def nextPoint(self):
+        return OnePoint()
+
+
+class OnePoint(Point):
+
+    def nextPoint(self):
+        return TwoPoint()
+
+
+class TwoPoint(Point):
+
+    def nextPoint(self):
+        pass
