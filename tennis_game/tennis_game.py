@@ -1,2 +1,14 @@
+class TennisGame(object):
 
-print("sup")
+    def __init__(self):
+        """
+        docstring
+        """
+        self.player1Score = 0
+        self.player2Score = 0
+
+    def getScore(self):
+        """
+        docstring
+        """
+        pass
