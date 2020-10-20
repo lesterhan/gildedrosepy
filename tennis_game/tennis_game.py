@@ -16,8 +16,8 @@ class TennisGame(object):
         return "Love-All"
 
     def wonPoint(self, player):
-        pass
-        # self.playerScores[player] = self.playerScores[player].nextPoint()
+        self.playerScores[player] = self.playerScores[player].nextPoint()
+        return self.playerScores[player]
 
 
 class Point(object):
